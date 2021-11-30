@@ -1,0 +1,25 @@
+name: flutter-watch
+version: "1.0"
+args:
+  - pid-file:
+      short: f
+      long: pid-file
+      value_name: FILE
+      help: "Sets the pid file location. Example: (--pid-file /tmp/flutter.pid)"
+      takes_value: true
+  - pid:
+      short: p
+      long: pid
+      value_name: PID
+      help: "Using a pid. Example (--pid 12345)"
+      takes_value: true
+  - event-type:
+      short: e
+      long: event-type
+      value_name: EVENT_TYPE
+      help: "'raw' or 'debounce'. Example (--event-type debounce)"
+      takes_value: true
+  - TARGET:
+      help: Set the project target. Example (flutter-watch /path/to/your/flutter/project/lib)
+      required: false
+      index: 1
