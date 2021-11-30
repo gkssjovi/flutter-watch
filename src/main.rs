@@ -66,6 +66,8 @@ impl FlutterWatch {
         self.pid = self.get_pid(&matches);
         self.target = self.get_target(&matches);
 
+        green_ln!("Watching -> {}", self.target);
+
         match self.config.watch_event {
             WatchEvent::DebouncedEvent => self.start_disptach_event(matches),
             WatchEvent::RawEvent => self.start_raw_event(matches),
