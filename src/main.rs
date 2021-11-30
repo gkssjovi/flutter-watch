@@ -55,7 +55,9 @@ impl FlutterWatch {
         let yaml = load_yaml!("cli.yml");
         let matches = App::from_yaml(yaml).get_matches();
 
-        let event_type = matches.value_of("event-type").unwrap_or("debounce");
+        
+        let default_event_type = if let WatchEvent::RawEvent = self.config.watch_event { "raw" } else { "debounce" };
+        let event_type = matches.value_of("event-type").unwrap_or(default_event_type);
 
         self.config.watch_event = match event_type {
             "raw" => WatchEvent::RawEvent,
