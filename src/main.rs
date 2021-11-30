@@ -31,7 +31,7 @@ pub struct Config {
 impl Config {
     pub fn new() -> Self {
         Self {
-            watch_event: WatchEvent::DebouncedEvent,
+            watch_event: WatchEvent::RawEvent,
         }
     }
 }
@@ -60,7 +60,7 @@ impl FlutterWatch {
         self.config.watch_event = match event_type {
             "raw" => WatchEvent::RawEvent,
             "debounce" => WatchEvent::DebouncedEvent,
-            _ => WatchEvent::DebouncedEvent,
+            _ => WatchEvent::RawEvent,
         };
 
         self.pid = self.get_pid(&matches);
